@@ -1,0 +1,294 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
+/* Reset CSS */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Default Styles */
+body {
+  background-color: #08090a;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+/* Universe & Solar System Layout */
+#universe {
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+#galaxy {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#solar-system {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+/* Planetary Orbits */
+.orbit {
+  animation-iteration-count: infinite;
+  animation-name: orbit;
+  animation-timing-function: linear;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform-style: preserve-3d;
+}
+
+.orbit .orbit {
+  animation-name: suborbit;
+}
+
+/* Planet Positions */
+.pos {
+  animation-iteration-count: infinite;
+  animation-name: invert;
+  animation-timing-function: linear;
+  height: 2em;
+  left: 50%;
+  margin-left: -1em;
+  margin-top: -1em;
+  position: absolute;
+  top: 50%;
+  transform-style: preserve-3d;
+  width: 2em;
+}
+
+/* Sun & Planets */
+#sun,
+.planet,
+#earth .moon {
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  height: 1em;
+  left: 50%;
+  margin-left: -0.5em;
+  margin-top: -0.5em;
+  position: absolute;
+  top: 50%;
+  transform-style: preserve-3d;
+  width: 1em;
+}
+
+#sun {
+  background-color: #fb7209;
+  box-shadow: 0 0 60px rgba(255, 160, 60, 0.4);
+}
+
+.planet {
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Saturn's Ring */
+.ring {
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  border: 0.3em solid rgba(160, 147, 130, 0.7);
+  border-radius: 50%;
+  height: 2em;
+  left: 50%;
+  margin-left: -1em;
+  margin-top: -1em;
+  position: absolute;
+  top: 50%;
+  width: 2em;
+}
+
+.ring:after {
+  border: 0.07em solid rgba(160, 147, 130, 0.5);
+  border-radius: 50%;
+  box-sizing: border-box;
+  content: "";
+  height: 2.2em;
+  left: 50%;
+  margin-left: -1.1em;
+  margin-top: -1.1em;
+  position: absolute;
+  top: 50%;
+  width: 2.2em;
+}
+
+/* Planet Index */
+#mercury { z-index: 10; }
+#venus { z-index: 9; }
+#earth { z-index: 8; }
+#moon { z-index: 7; }
+#mars { z-index: 6; }
+#jupiter { z-index: 5; }
+#saturn { z-index: 4; }
+#uranus { z-index: 3; }
+#neptune { z-index: 2; }
+#sun { z-index: 1; }
+
+/* Planet Animations */
+@keyframes orbit {
+  0% { transform: rotateZ(0deg); }
+  100% { transform: rotateZ(-360deg); }
+}
+
+@keyframes suborbit {
+  0% { transform: rotateX(90deg) rotateZ(0deg); }
+  100% { transform: rotateX(90deg) rotateZ(-360deg); }
+}
+
+@keyframes invert {
+  0% { transform: rotateX(-90deg) rotateY(360deg) rotateZ(0deg); }
+  100% { transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg); }
+}
+
+/* Opening Animation */
+.view-3D .opening #sun,
+.view-3D .opening .orbit,
+.view-3D .opening .pos,
+.view-3D .opening .planet,
+.view-3D .opening .satelite,
+.view-3D .opening .ring {
+  transition-duration: 4s;
+}
+
+#universe.opening #sun { box-shadow: 0 0 0}
